@@ -30,7 +30,7 @@ struct SyncUpDetail {
       switch action {
       case .alert(.presented(.confirmButtonTapped)):
         @Shared(.syncUps) var syncUps
-        $syncUps.withLock { $0.remove(id: state.syncUp.id) }
+        $syncUps.withLock { _ = $0.remove(id: state.syncUp.id) }
         return .run { _ in await dismiss() }
 
       case .alert(.dismiss):
